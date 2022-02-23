@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cp4waiops-ibm-cp-waiops
+spec:
+  destination:
+    namespace: cp4waiops
+    server: https://kubernetes.default.svc
+  project: 2-services
+  source:
+    path: payload/2-services/namespace/cp4waiops/ibm-cp-waiops
+    repoURL: https://github.com/gandhicloudlaborg/gan-sew-test9
+    targetRevision: main
+    helm:
+      releaseName: ibm-cp-waiops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences: []
