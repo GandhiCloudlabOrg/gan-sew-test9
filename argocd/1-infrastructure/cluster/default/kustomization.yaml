@@ -2,4 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - base/cp4waiops-aiops-topology-service-account-sa.yaml
+  - base/cp4waiops-ibm-entitlement-key.yaml
   - base/namespace-cp4waiops.yaml
