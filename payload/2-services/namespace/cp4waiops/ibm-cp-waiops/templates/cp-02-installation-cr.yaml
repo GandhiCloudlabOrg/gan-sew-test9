@@ -1,0 +1,23 @@
+apiVersion: orchestrator.aiops.ibm.com/v1alpha1
+kind: Installation
+metadata:
+  name: ibm-cp-watson-aiops
+  namespace: {{ .Values.cp_waiops_namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: “-50”
+spec:
+  imagePullSecret: {{ .Values.cp_waiops_imagePullSecret }}
+  license:
+    accept: true
+  pakModules:
+  - name: aiopsFoundation
+    enabled: true
+  - name: applicationManager
+    enabled: true
+  - name: aiManager
+    enabled: true
+  - name: connection
+    enabled: false
+  size: small
+  storageClass: {{ .Values.cp_waiops_storageClass }}
+  storageClassLargeBlock: {{ .Values.cp_waiops_storageClassLargeBlock }}
